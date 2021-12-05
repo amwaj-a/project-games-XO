@@ -108,7 +108,7 @@ function win(turn) {
 
 
 
-let a = 0;
+
 
 function playerwin(turn) {
     cell.off("click");
@@ -123,7 +123,7 @@ function playerwin(turn) {
 
 
     setTimeout(() => {
-        a = a + 1;
+
         cell.text('')
         cell.on("click", cellclicked);
 
@@ -137,6 +137,7 @@ function playerwin(turn) {
 
 
 }
+
 
 function turnauto() {
     let x = Math.floor(Math.random() * 10)
@@ -160,32 +161,32 @@ function play(a, a2, a3, a4, a5, a6, a7, a8, a9) {
 
 
     setTimeout(() => {
-        if (cell_0.text() === '') {
-            cell_0.text(o)
+        if (a.text() === '') {
+            a.text(o)
 
-        } else if (cell_4.text() === '') {
-            cell_4.text(o)
+        } else if (a2.text() === '') {
+            a2.text(o)
 
-        } else if (cell_8.text() === '') {
-            cell_8.text(o)
+        } else if (a3.text() === '') {
+            a3.text(o)
 
-        } else if (cell_2.text() === '') {
-            cell_2.text(o)
+        } else if (a4.text() === '') {
+            a4.text(o)
 
-        } else if (cell_5.text() === '') {
-            cell_5.text(o)
+        } else if (a5.text() === '') {
+            a5.text(o)
 
-        } else if (cell_6.text() === '') {
-            cell_6.text(o)
+        } else if (a6.text() === '') {
+            a6.text(o)
 
-        } else if (cell_1.text() === '') {
-            cell_1.text(o)
+        } else if (a7.text() === '') {
+            a7.text(o)
 
-        } else if (cell_3.text() === '') {
-            cell_3.text(o)
+        } else if (a8.text() === '') {
+            a8.text(o)
 
-        } else if (cell_7.text() === '') {
-            cell_7.text(o)
+        } else if (a9.text() === '') {
+            a9.text(o)
 
         }
         win(turn)
