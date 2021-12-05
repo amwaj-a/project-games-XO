@@ -144,7 +144,7 @@ function turnauto() {
     if (x <= 2) {
         play(cell_0, cell_4, cell_8, cell_2, cell_5, cell_6, cell_1, cell_3, cell_7)
     } else if (x <= 4) {
-        play(cell_7, cell_4, cell_6, cell_8, cell_0, cell_8, cell_2, cell_5, cell_3)
+        play(cell_0, cell_4, cell_6, cell_8, cell_7, cell_1, cell_2, cell_5, cell_3)
     } else if (x <= 6) {
         play(cell_4, cell_6, cell_2, cell_5, cell_8, cell_7, cell_6, cell_3, cell_0)
     } else if (x <= 8) {
@@ -156,13 +156,76 @@ function turnauto() {
     }
 }
 
-function play(a, a2, a3, a4, a5, a6, a7, a8, a9) {
-
-
-
+function play(a1, a2, a3, a4, a5, a6, a7, a8, a9) {
     setTimeout(() => {
-        if (a.text() === '') {
-            a.text(o)
+
+        //colum
+        const col1 = cell_0.text() + cell_3.text() + cell_6.text()
+        const col2 = cell_1.text() + cell_4.text() + cell_7.text()
+        const col3 = cell_2.text() + cell_5.text() + cell_8.text()
+        const row1 = cell_0.text() + cell_1.text() + cell_2.text()
+        const row2 = cell_3.text() + cell_4.text() + cell_5.text()
+        const row3 = cell_6.text() + cell_7.text() + cell_8.text()
+        const hos = cell_0.text() + cell_4.text() + cell_8.text()
+        const hos2 = cell_2.text() + cell_4.text() + cell_6.text()
+            //column
+        if ((col1 === "XX" && col1.length < 3) || col1 === 'OO') {
+            console.log(col1.length < 3);
+
+            if (cell_0.text() === '') a1 = cell_0
+            else if (cell_3.text() === '') a1 = cell_3
+            else a1 = cell_6
+
+
+        } else if ((col2 === "XX" && col2.length < 3) || col2 === 'OO') {
+            if (cell_1.text() === '') a1 = cell_1
+            else if (cell_4.text() === '') a1 = cell_4
+            else a1 = cell_7
+        } else if ((col3 === "XX" && col3.length < 3) || col3 === 'OO') {
+            if (cell_2.text() === '') a1 = cell_2
+            else if (cell_5.text() === '') a1 = cell_5
+            else a1 = cell_8
+        }
+        //row
+        else if ((row1 === "XX" && row1.length < 3) || row1 === 'OO') {
+            if (cell_0.text() === '') a1 = cell_0
+            else if (cell_1.text() === '') a1 = cell_1
+            else a1 = cell_2
+        } else if ((row2 === "XX" && row2.length < 3) || row2 === 'OO') {
+            if (cell_3.text() === '') a1 = cell_3
+            else if (cell_4.text() === '') a1 = cell_4
+            else a1 = cell_5
+        } else if ((row3 === "XX" && row3.length < 3) || row3 === 'OO') {
+            if (cell_8.text() === '') a1 = cell_8
+            else if (cell_7.text() === '') a1 = cell_7
+            else a1 = cell_6
+        }
+        //
+        else if ((hos === "XX" && hos.length < 3) || hos === 'OO') {
+            console.log("Hos");
+            if (cell_0.text() === '') a1 = cell_0
+            else if (cell_4.text() === '') a1 = cell_4
+            else a1 = cell_8
+        } else if ((hos2 === "XX" && hos2.length < 3) || hos2 === 'OO') {
+            console.log("Hos2");
+            if (cell_2.text() === '') a1 = cell_2
+            else if (cell_4.text() === '') a1 = cell_4
+            else a1 = cell_6
+        } else {}
+
+
+
+
+
+
+
+
+
+
+
+
+        if (a1.text() === '') {
+            a1.text(o)
 
         } else if (a2.text() === '') {
             a2.text(o)
@@ -193,6 +256,7 @@ function play(a, a2, a3, a4, a5, a6, a7, a8, a9) {
         turn = x
 
     }, 1000);
+
 
 }
 
