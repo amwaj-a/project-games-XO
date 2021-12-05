@@ -139,6 +139,25 @@ function playerwin(turn) {
 }
 
 function turnauto() {
+    let x = Math.floor(Math.random() * 10)
+    if (x <= 2) {
+        play(cell_0, cell_4, cell_8, cell_2, cell_5, cell_6, cell_1, cell_3, cell_7)
+    } else if (x <= 4) {
+        play(cell_7, cell_4, cell_6, cell_8, cell_0, cell_8, cell_2, cell_5, cell_3)
+    } else if (x <= 6) {
+        play(cell_4, cell_6, cell_2, cell_5, cell_8, cell_7, cell_6, cell_3, cell_0)
+    } else if (x <= 8) {
+        play(cell_8, cell_7, cell_6, cell_5, cell_2, cell_3, cell_0, cell_1, cell_4)
+    } else {
+
+        play(cell_2, cell_4, cell_6, cell_5, cell_8, cell_1, cell_0, cell_3, cell_7)
+
+    }
+}
+
+function play(a, a2, a3, a4, a5, a6, a7, a8, a9) {
+
+
 
     setTimeout(() => {
         if (cell_0.text() === '') {
