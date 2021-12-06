@@ -19,7 +19,10 @@ $(document).ready(function() {
 
     const cell = $('.cell')
     cellclicked()
-    cell.click(cellclicked)
+    setTimeout(() => {
+        cell.click(cellclicked)
+
+    }, 1000);
 
     function CSS_win(a, b, c) {
         a.css('color', 'orange')
@@ -38,7 +41,7 @@ $(document).ready(function() {
         if (
             (cell_0.text() === cell_1.text() && cell_1.text() === cell_2.text()) &&
             cell_0.text() !== '') {
-            console.log("win 1row ");
+
             playerwin(turn)
             CSS_win(cell_0, cell_1, cell_2)
 
@@ -47,7 +50,6 @@ $(document).ready(function() {
         else if (
             (cell_0.text() === cell_3.text() &&
                 cell_3.text() === cell_6.text()) && cell_0.text() !== '') {
-            console.log("win clum 1");
             playerwin(turn)
             CSS_win(cell_0, cell_3, cell_6)
 
@@ -55,7 +57,6 @@ $(document).ready(function() {
         else if (
             (cell_3.text() === cell_4.text() && cell_4.text() === cell_5.text()) &&
             cell_3.text() !== '') {
-            console.log("win 2row ");
             playerwin(turn)
             CSS_win(cell_3, cell_4, cell_5)
 
@@ -64,7 +65,6 @@ $(document).ready(function() {
         else if (
             (cell_1.text() === cell_4.text() &&
                 cell_4.text() === cell_7.text()) && cell_1.text() !== '') {
-            console.log("win clum 2");
             playerwin(turn)
             CSS_win(cell_1, cell_4, cell_7)
 
@@ -73,7 +73,6 @@ $(document).ready(function() {
         else if (
             (cell_6.text() === cell_7.text() && cell_7.text() === cell_8.text()) &&
             cell_6.text() !== '') {
-            console.log("win 3row ");
             playerwin(turn)
             CSS_win(cell_6, cell_7, cell_8)
 
@@ -83,14 +82,12 @@ $(document).ready(function() {
         else if (
             (cell_2.text() === cell_5.text() &&
                 cell_5.text() === cell_8.text()) && cell_8.text() !== '') {
-            console.log("win clum 3");
             playerwin(turn)
             CSS_win(cell_2, cell_5, cell_8)
 
         } else if (
             (cell_0.text() === cell_4.text() && cell_4.text() === cell_8.text()) &&
             cell_0.text() !== '') {
-            console.log("win  ");
             playerwin(turn)
             CSS_win(cell_0, cell_4, cell_8)
 
@@ -98,7 +95,6 @@ $(document).ready(function() {
         } else if (
             (cell_2.text() === cell_4.text() && cell_4.text() === cell_6.text()) &&
             cell_6.text() !== '') {
-            console.log("win 3row ");
             playerwin(turn)
             CSS_win(cell_2, cell_6, cell_4)
 
@@ -158,7 +154,6 @@ $(document).ready(function() {
 
     function turnauto() {
         let x = Math.floor(Math.random() * 10)
-            // console.log(x);
         if (x <= 2) {
             play(cell_0, cell_4, cell_8, cell_2, cell_5, cell_6, cell_1, cell_3, cell_7)
         } else if (x <= 4) {
@@ -174,9 +169,16 @@ $(document).ready(function() {
         }
     }
 
+    function ifelse(p1, p2, p3, a1) {
+        if (p1.text() === '') a1 = p1
+        else if (p2.text() === '') a1 = p2
+        else a1 = p3
+        return a1
+
+    }
+
     function play(a1, a2, a3, a4, a5, a6, a7, a8, a9) {
         setTimeout(() => {
-            // console.log("hello");
             //colum
             const col1 = cell_0.text() + cell_3.text() + cell_6.text()
             const col2 = cell_1.text() + cell_4.text() + cell_7.text()
@@ -186,57 +188,70 @@ $(document).ready(function() {
             const row3 = cell_6.text() + cell_7.text() + cell_8.text()
             const hos = cell_0.text() + cell_4.text() + cell_8.text()
             const hos2 = cell_2.text() + cell_4.text() + cell_6.text()
-                //column
-            if (col1 === 'OO' || (col1 === "XX" && col1.length < 3)) {
-                console.log(col1.length < 3);
+                //column oo
 
-                if (cell_0.text() === '') a1 = cell_0
-                else if (cell_3.text() === '') a1 = cell_3
-                else a1 = cell_6
+            if (col1 === 'OO') {
+                a1 = ifelse(cell_0, cell_3, cell_6, a1)
+            } else if (col2 === 'OO') {
+                a1 = ifelse(cell_1, cell_4, cell_7, a1)
+
+            } else if (col3 === 'OO') {
+                a1 = ifelse(cell_2, cell_5, cell_8, a1)
 
 
-            } else if (col2 === 'OO' || (col2 === "XX" && col2.length < 3)) {
-                if (cell_1.text() === '') a1 = cell_1
-                else if (cell_4.text() === '') a1 = cell_4
-                else a1 = cell_7
-            } else if (col3 === 'OO' || (col3 === "XX" && col3.length < 3)) {
-                if (cell_2.text() === '') a1 = cell_2
-                else if (cell_5.text() === '') a1 = cell_5
-                else a1 = cell_8
             }
-            //row
-            else if (row1 === 'OO' || (row1 === "XX" && row1.length < 3)) {
-                console.log("row1");
+            //row oo
+            else if (row1 === 'OO') {
+                a1 = ifelse(cell_0, cell_1, cell_2, a1)
 
-                if (cell_0.text() === '') a1 = cell_0
-                else if (cell_1.text() === '') a1 = cell_1
-                else a1 = cell_2
-            } else if (row2 === 'OO' || (row2 === "XX" && row2.length < 3)) {
-                console.log("row2");
+            } else if (row2 === 'OO') {
 
-                if (cell_3.text() === '') a1 = cell_3
-                else if (cell_4.text() === '') a1 = cell_4
-                else a1 = cell_5
-            } else if (row3 === 'OO' || (row3 === "XX" && row3.length < 3)) {
-                console.log("row3");
-                if (cell_8.text() === '') a1 = cell_8
-                else if (cell_7.text() === '') a1 = cell_7
-                else a1 = cell_6
+                a1 = ifelse(cell_3, cell_4, cell_5, a1)
+
+            } else if (row3 === 'OO') {
+                a1 = ifelse(cell_8, cell_7, cell_6, a1)
+
             }
             //
             else if (hos === 'OO' || (hos === "XX" && hos.length < 3)) {
-                console.log("Hos");
-                if (cell_0.text() === '') a1 = cell_0
-                else if (cell_4.text() === '') a1 = cell_4
-                else a1 = cell_8
+                a1 = ifelse(cell_0, cell_4, cell_8, a1)
+
             } else if (hos2 === 'OO' || (hos2 === "XX" && hos2.length < 3)) {
-                console.log("Hos2");
-                if (cell_2.text() === '') a1 = cell_2
-                else if (cell_4.text() === '') a1 = cell_4
-                else a1 = cell_6
-            } else {}
+                a1 = ifelse(cell_2, cell_4, cell_6, a1)
 
 
+            }
+            //col xx
+            else if (col1 === "XX" && col1.length < 3) {
+                a1 = ifelse(cell_0, cell_3, cell_6, a1)
+            } else if (col2 === "XX" && col2.length < 3) {
+                a1 = ifelse(cell_1, cell_4, cell_7, a1)
+            } else if (col3 === "XX" && col3.length < 3) {
+                a1 = ifelse(cell_2, cell_5, cell_8, a1)
+
+
+            }
+            //row xx
+            else if (row1 === "XX" && row1.length < 3) {
+                a1 = ifelse(cell_0, cell_1, cell_2, a1)
+
+            } else if (row2 === "XX" && row2.length < 3) {
+
+                a1 = ifelse(cell_3, cell_4, cell_5, a1)
+
+            } else if (row3 === "XX" && row3.length < 3) {
+                a1 = ifelse(cell_8, cell_7, cell_6, a1)
+
+            }
+            //hos xx
+            else if (hos === "XX" && hos.length < 3) {
+                a1 = ifelse(cell_0, cell_4, cell_8, a1)
+
+            } else if (hos2 === "XX" && hos2.length < 3) {
+                a1 = ifelse(cell_2, cell_4, cell_6, a1)
+
+
+            }
 
 
 
